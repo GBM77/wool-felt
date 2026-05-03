@@ -1,694 +1,1545 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>療癒系羊毛娃娃｜小象＆綠色魚系列｜募資計畫</title>
-    <!-- Font Awesome 6 (免費圖示庫) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts 柔軟字體 -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>療癒系羊毛氈娃娃 🐘🐊 募資計畫</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FFB5C8;
+    --pink-light: #FFE4ED;
+    --pink-deep: #FF7BAC;
+    --green: #7DC67A;
+    --green-light: #D4EDCA;
+    --green-deep: #4CAF50;
+    --cream: #FFF9F0;
+    --warm: #FFF3E8;
+    --gold: #FFD166;
+    --text: #3D2C2C;
+    --text-light: #8B6F6F;
+    --white: #FFFFFF;
+    --shadow: rgba(255,181,200,0.3);
+  }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #fffaf5;
-            color: #4a3b2c;
-            line-height: 1.5;
-        }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* 可愛療癒主色調 */
-        :root {
-            --pale-pink: #ffe9e3;
-            --soft-mint: #d9f0ec;
-            --warm-beige: #fef1e0;
-            --coral: #f7b787;
-            --brown-grey: #8b6f4c;
-            --shadow-sm: 0 8px 20px rgba(0,0,0,0.05);
-            --border-radius-card: 32px;
-        }
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
+  /* ===== VIEW TOGGLE ===== */
+  #view-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    background: white;
+    border-radius: 50px;
+    padding: 6px;
+    box-shadow: 0 4px 20px var(--shadow);
+  }
 
-        /* 頭部區塊 */
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .hero h1 {
-            font-size: 2.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #e9a87c, #c26e4a);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            color: #7a5a44;
-            max-width: 650px;
-            margin: 0.8rem auto 0;
-        }
-        .badge {
-            display: inline-block;
-            background: #ffe0b5;
-            border-radius: 100px;
-            padding: 0.3rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #b45f2b;
-            margin-bottom: 1rem;
-        }
+  #view-toggle button {
+    border: none;
+    border-radius: 40px;
+    padding: 8px 18px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: transparent;
+    color: var(--text-light);
+  }
 
-        /* 進度條募資區 */
-        .fund-progress {
-            background: white;
-            border-radius: 48px;
-            padding: 1.8rem 2rem;
-            box-shadow: var(--shadow-sm);
-            margin-bottom: 3rem;
-            border: 1px solid #ffe2cf;
-        }
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-bottom: 1.2rem;
-        }
-        .stat-card {
-            background: #fff6ed;
-            border-radius: 28px;
-            padding: 0.6rem 1.2rem;
-            flex: 1;
-            min-width: 120px;
-            text-align: center;
-        }
-        .stat-card .label {
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: #b47c48;
-        }
-        .stat-card .number {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: #593c22;
-        }
-        .progress-bar {
-            background: #f0dfcf;
-            border-radius: 40px;
-            height: 16px;
-            overflow: hidden;
-            margin: 1rem 0 0.5rem;
-        }
-        .progress-fill {
-            background: #f7b787;
-            width: 0%;
-            height: 100%;
-            border-radius: 40px;
-            transition: width 0.3s ease;
-        }
-        .progress-text {
-            text-align: right;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #a7754a;
-        }
+  #view-toggle button.active {
+    background: var(--pink-deep);
+    color: white;
+    box-shadow: 0 2px 10px rgba(255,123,172,0.4);
+  }
 
-        /* 產品介紹雙欄 */
-        .series-showcase {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        .showcase {
-            flex: 1;
-            background: white;
-            border-radius: var(--border-radius-card);
-            padding: 1.6rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
-            border: 1px solid #fbe5d4;
-        }
-        .showcase h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .grid-icons {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(90px,1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .product-item {
-            background: #fef7f0;
-            border-radius: 32px;
-            padding: 0.8rem 0.2rem;
-            text-align: center;
-            transition: 0.1s ease;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        .product-item i {
-            font-size: 2.2rem;
-            margin-bottom: 6px;
-            display: block;
-            color: #deb887;
-        }
-        .accessory-note {
-            margin-top: 1rem;
-            background: #faf0e6;
-            border-radius: 28px;
-            padding: 0.8rem 1rem;
-            font-size: 0.85rem;
-        }
-        /* 方案＆表單區 */
-        .pledge-section {
-            background: #ffffffdb;
-            backdrop-filter: blur(2px);
-            border-radius: 48px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border: 1px solid #ffdec9;
-            box-shadow: var(--shadow-sm);
-        }
-        .flex-pledge {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        .plan-selector {
-            flex: 1.4;
-        }
-        .message-area {
-            flex: 1;
-            background: #fffaf2;
-            border-radius: 32px;
-            padding: 1.5rem;
-        }
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        label {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 6px;
-            color: #6c4f32;
-        }
-        select, input, textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 60px;
-            border: 1px solid #f7d5bc;
-            background: white;
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-        textarea {
-            border-radius: 24px;
-            resize: vertical;
-        }
-        select:focus, input:focus, textarea:focus {
-            outline: none;
-            border-color: #f3b484;
-            box-shadow: 0 0 0 3px rgba(247,183,135,0.2);
-        }
-        .price-preview {
-            background: #f5e5d8;
-            border-radius: 36px;
-            padding: 0.8rem 1.2rem;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin: 1rem 0;
-        }
-        .btn-support {
-            background: #d98956;
-            border: none;
-            width: 100%;
-            padding: 14px;
-            border-radius: 60px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        .btn-support:hover {
-            background: #c06e3e;
-            transform: scale(0.98);
-        }
-        .supporters-list {
-            margin-top: 2rem;
-            background: #fffef7;
-            border-radius: 40px;
-            padding: 1.2rem;
-            max-height: 380px;
-            overflow-y: auto;
-        }
-        .message-card {
-            background: #fef6ea;
-            border-radius: 28px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-left: 8px solid #f2bc84;
-        }
-        .message-header {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        .msg-name {
-            color: #a5652c;
-        }
-        .msg-amount {
-            background: #ffe3cf;
-            padding: 2px 10px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-        }
-        .msg-plan {
-            font-size: 0.8rem;
-            color: #8b6f4c;
-            margin: 0.3rem 0;
-        }
-        .msg-text {
-            margin-top: 6px;
-            font-size: 0.9rem;
-        }
-        .msg-time {
-            font-size: 0.7rem;
-            color: #b7926e;
-            text-align: right;
-        }
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #FFE4ED 0%, #FFF9F0 40%, #D4EDCA 100%);
+    padding: 80px 20px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
 
-        /* 羊毛教學+小技巧 */
-        .tutorial {
-            background: #fff3e9;
-            border-radius: 48px;
-            padding: 2rem;
-            margin-top: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        .step-list {
-            flex: 1;
-        }
-        .step-list ol {
-            padding-left: 1.5rem;
-        }
-        .step-list li {
-            margin: 8px 0;
-        }
-        .tip-box {
-            flex: 1;
-            background: white;
-            border-radius: 32px;
-            padding: 1.4rem;
-        }
+  .hero::before {
+    content: '🌸';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.08;
+    top: -20px;
+    left: -30px;
+    animation: float 6s ease-in-out infinite;
+  }
 
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.8rem;
-            color: #b38b64;
-            border-top: 1px solid #f5e0cf;
-            padding-top: 2rem;
-        }
-        @media (max-width: 700px) {
-            .container { padding: 1rem; }
-            .hero h1 { font-size: 1.8rem; }
-            .stat-card .number { font-size: 1.4rem; }
-            .flex-pledge { flex-direction: column; }
-        }
-        .small-icon {
-            font-size: 0.9rem;
-            margin-right: 5px;
-        }
-        h2 {
-            font-size: 1.7rem;
-            margin: 1.2rem 0 1rem;
-        }
-    </style>
+  .hero::after {
+    content: '🍃';
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.08;
+    bottom: -10px;
+    right: -20px;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--pink-deep);
+    color: white;
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #FF7BAC, #4CAF50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: var(--text-light);
+    margin-bottom: 30px;
+  }
+
+  .hero-emojis {
+    font-size: 40px;
+    letter-spacing: 8px;
+    margin-bottom: 30px;
+  }
+
+  /* ===== STATS BAR ===== */
+  .stats-bar {
+    background: white;
+    border-radius: 24px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 28px 32px;
+    box-shadow: 0 8px 40px var(--shadow);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 10px;
+    border-right: 2px dashed var(--pink-light);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-value {
+    font-size: clamp(24px, 4vw, 38px);
+    font-weight: 900;
+    color: var(--pink-deep);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-value.green { color: var(--green-deep); }
+  .stat-value.gold { color: #E6A800; }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+  }
+
+  .progress-wrap {
+    background: white;
+    border-radius: 20px;
+    padding: 24px 28px;
+    box-shadow: 0 4px 20px var(--shadow);
+    margin-bottom: 20px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .progress-pct {
+    color: var(--pink-deep);
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .progress-bar {
+    height: 16px;
+    background: var(--pink-light);
+    border-radius: 50px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 50px;
+    background: linear-gradient(90deg, var(--pink-deep), var(--pink));
+    transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+
+  .progress-fill::after {
+    content: '🐘';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+
+  .progress-goal {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 8px;
+    text-align: right;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+  }
+
+  /* ===== PRODUCT SECTION ===== */
+  .products-section {
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pink-light), transparent);
+    border-radius: 2px;
+  }
+
+  .product-card {
+    border: 2px solid var(--pink-light);
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    background: var(--cream);
+  }
+
+  .product-card:hover {
+    border-color: var(--pink-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .product-card.selected {
+    border-color: var(--pink-deep);
+    background: var(--pink-light);
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+
+  .product-card.selected::before {
+    content: '✓';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 26px;
+    height: 26px;
+    background: var(--pink-deep);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  .product-emoji { font-size: 28px; margin-bottom: 8px; }
+
+  .product-name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .product-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .product-price {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--pink-deep);
+  }
+
+  .product-price span {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  .product-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #7A5500;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ===== PLEDGE FORM ===== */
+  .pledge-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-card {
+    background: white;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+
+  .form-label span {
+    color: var(--pink-deep);
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    border: 2px solid var(--pink-light);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--pink-deep);
+    background: white;
+  }
+
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  /* ===== PAYMENT MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(61,44,44,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: white;
+    border-radius: 28px;
+    padding: 36px 32px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes modalIn {
+    from { transform: scale(0.7) translateY(40px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .modal-icon { font-size: 60px; margin-bottom: 16px; }
+  .modal-title { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+  .modal-sub { color: var(--text-light); font-size: 14px; margin-bottom: 24px; }
+
+  .modal-amount {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--pink-deep);
+    background: var(--pink-light);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .modal-btns {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn-cancel {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid var(--pink-light);
+    border-radius: 14px;
+    background: white;
+    color: var(--text-light);
+    font-weight: 700;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .btn-cancel:hover { border-color: var(--pink-deep); }
+
+  .btn-pay {
+    flex: 2;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--pink-deep), #FF4D94);
+    color: white;
+    font-weight: 900;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: pointer;
+    font-size: 15px;
+    box-shadow: 0 4px 16px rgba(255,123,172,0.5);
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+
+  .btn-pay:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,123,172,0.5); }
+
+  /* ===== SUBMIT BTN ===== */
+  .btn-submit {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--pink-deep) 0%, #FF4D94 100%);
+    color: white;
+    font-weight: 900;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 0 6px 24px rgba(255,123,172,0.4);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(255,123,172,0.5);
+  }
+
+  .btn-submit:active { transform: translateY(0); }
+
+  /* ===== LEADERBOARD ===== */
+  .leaderboard-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+  }
+
+  .leaderboard-card {
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+
+  .supporter-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--pink-light);
+    animation: slideIn 0.5s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .supporter-item:last-child { border-bottom: none; }
+
+  .supporter-rank {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .rank-1 { background: var(--gold); color: #7A5500; font-size: 18px; }
+  .rank-2 { background: #E0E0E0; color: #555; }
+  .rank-3 { background: #FFCCAA; color: #8B4500; }
+  .rank-other { background: var(--pink-light); color: var(--pink-deep); }
+
+  .supporter-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-light), var(--green-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .supporter-info { flex: 1; }
+  .supporter-name { font-weight: 700; font-size: 14px; }
+  .supporter-product { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+  .supporter-comment {
+    font-size: 12px;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 4px;
+    background: var(--cream);
+    border-radius: 8px;
+    padding: 4px 8px;
+    display: inline-block;
+  }
+
+  .supporter-amount {
+    font-weight: 900;
+    color: var(--pink-deep);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .supporter-time {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-top: 2px;
+    text-align: right;
+  }
+
+  /* ===== COMMENTS ===== */
+  .comments-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  .comment-item {
+    background: white;
+    border-radius: 18px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 12px var(--shadow);
+    animation: slideIn 0.5s ease;
+  }
+
+  .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .comment-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-light), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .comment-name { font-weight: 700; font-size: 14px; }
+  .comment-time { font-size: 11px; color: var(--text-light); margin-left: auto; }
+  .comment-text { font-size: 14px; line-height: 1.6; color: var(--text); }
+  .comment-paid {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-deep);
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* ===== SUCCESS TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: white;
+    border-radius: 20px;
+    padding: 16px 28px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    font-weight: 700;
+    font-size: 15px;
+    z-index: 3000;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-left: 4px solid var(--pink-deep);
+    white-space: nowrap;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ===== MOBILE VIEW ===== */
+  body.mobile-view .main-content {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+
+  body.mobile-view .stats-bar {
+    max-width: 420px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 20px 16px;
+  }
+
+  body.mobile-view .stat-value { font-size: 22px; }
+  body.mobile-view .progress-section { max-width: 420px; }
+  body.mobile-view .leaderboard-section { max-width: 420px; }
+  body.mobile-view .comments-section { max-width: 420px; }
+
+  body.mobile-view #view-toggle button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* ===== EMPTY STATE ===== */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+
+  .empty-state-emoji { font-size: 48px; margin-bottom: 12px; display: block; }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-bar {
+    background: linear-gradient(135deg, var(--pink-deep), #FF4D94);
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .countdown-nums {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+
+  /* ===== TABS ===== */
+  .section-tabs {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .tab-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid var(--pink-light);
+    background: white;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: all 0.2s;
+  }
+
+  .tab-btn.active {
+    background: var(--pink-deep);
+    color: white;
+    border-color: var(--pink-deep);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ===== CONFETTI STYLE ===== */
+  .confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: confettiFall 1.5s ease-in forwards;
+  }
+
+  @keyframes confettiFall {
+    from { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery-section {
+    background: linear-gradient(180deg, #FFE4ED 0%, #FFF9F0 100%);
+    padding: 40px 20px;
+    border-bottom: 2px dashed var(--pink-light);
+  }
+
+  .gallery-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .gallery-title {
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .gallery-title::before,
+  .gallery-title::after {
+    content: '';
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--pink-deep));
+    border-radius: 2px;
+  }
+
+  .gallery-title::after {
+    background: linear-gradient(90deg, var(--pink-deep), transparent);
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .gallery-item {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--shadow);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: white;
+    position: relative;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 36px rgba(255,123,172,0.35);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.06);
+  }
+
+  .gallery-caption {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    background: white;
+    line-height: 1.4;
+  }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,10,15,0.92);
+    backdrop-filter: blur(8px);
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .lightbox-overlay.open { display: flex; }
+
+  .lb-img-wrap {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    animation: lbIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes lbIn {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .lb-img-wrap img {
+    max-width: 100%;
+    max-height: 75vh;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .lb-caption {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 16px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .lb-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px);
+  }
+
+  .lb-close:hover { background: rgba(255,123,172,0.5); }
+
+  .lb-prev, .lb-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-size: 36px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+    z-index: 1;
+  }
+
+  .lb-prev { left: 20px; }
+  .lb-next { right: 20px; }
+  .lb-prev:hover, .lb-next:hover { background: rgba(255,123,172,0.5); transform: translateY(-50%) scale(1.1); }
+
+  body.mobile-view .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    .main-content { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 16px; }
+    .stat-value { font-size: 20px; }
+    .hero { padding: 60px 16px 40px; }
+    #view-toggle { top: 10px; right: 10px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
+  }
+</style>
 </head>
 <body>
-<div class="container">
-    <!-- 主視覺 + 標語 -->
-    <div class="hero">
-        <div class="badge"><i class="fas fa-gift"></i> 即日起限時募資 · 手工羊毛觸感</div>
-        <h1>🐘 小象＆綠色魚 🐊<br>療癒羊毛娃娃募資計畫</h1>
-        <p>獨家磁吸/魔鬼氈配件｜自由變換造型｜手機/包包 隨身超萌夥伴</p>
-        <p style="font-size:0.9rem; margin-top: 12px;">✨ 每件都承載手作溫度，限時募資你的專屬夥伴 ✨</p>
-    </div>
 
-    <!-- 募資進度 + 動態金額區 -->
-    <div class="fund-progress">
-        <div class="stats">
-            <div class="stat-card"><div class="label">🎯 募資目標</div><div class="number">NT$ 200,000</div></div>
-            <div class="stat-card"><div class="label">🐣 已募集金額</div><div class="number" id="totalRaisedDisplay">NT$ 0</div></div>
-            <div class="stat-card"><div class="label">🤝 支持者人數</div><div class="number" id="backerCount">0</div></div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <div class="progress-text" id="progressPercent">0% 達成</div>
-    </div>
-
-    <!-- 可愛圖鑑：小象系列＆綠色魚系列 -->
-    <div class="series-showcase">
-        <div class="showcase">
-            <h3><i class="fas fa-elephant"></i> 小象系列 · 五款萌裝</h3>
-            <div class="grid-icons">
-                <div class="product-item"><i class="fas fa-cloud"></i>雲朵小象</div>
-                <div class="product-item"><i class="fas fa-strawberry"></i>草莓小象</div>
-                <div class="product-item"><i class="fas fa-moon"></i>睡衣小象</div>
-                <div class="product-item"><i class="fas fa-leaf"></i>花環小象</div>
-                <div class="product-item"><i class="fas fa-ice-cream"></i>冰淇淋小象</div>
-            </div>
-            <div class="accessory-note"><i class="fas fa-magic"></i> 可拆卸帽子：草莓帽·雲朵帽·睡帽·小花帽等 磁吸設計！</div>
-        </div>
-        <div class="showcase">
-            <h3><i class="fas fa-fish"></i> 綠色魚系列 · 呆萌軍團</h3>
-            <div class="grid-icons">
-                <div class="product-item"><i class="fas fa-grin-tongue-squint"></i>呆萌魚</div>
-                <div class="product-item"><i class="fas fa-watermelon"></i>西瓜魚</div>
-                <div class="product-item"><i class="fas fa-dragon"></i>恐龍裝魚</div>
-                <div class="product-item"><i class="fas fa-umbrella"></i>雨衣魚</div>
-                <div class="product-item"><i class="fas fa-party-horn"></i>派對魚</div>
-            </div>
-            <div class="accessory-note"><i class="fas fa-exchange-alt"></i> 魔法配件區：小披風·眼鏡·領結·小書包，每天換新造型！</div>
-        </div>
-    </div>
-
-    <!-- 主要募資 ＋ 留言登記區塊 -->
-    <div class="pledge-section">
-        <h2 style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-hand-holding-heart"></i> 擇你所愛 · 支持方案</h2>
-        <div class="flex-pledge">
-            <!-- 左：方案選擇＋金額計算 -->
-            <div class="plan-selector">
-                <div class="form-group">
-                    <label><i class="fas fa-tag"></i> 選擇回饋方案</label>
-                    <select id="planSelect">
-                        <option value="399">🐘 單款小象 / 單款魚 - NT$399</option>
-                        <option value="1799">🎁 全套小象5件組 - NT$1,799</option>
-                        <option value="1799">🎁 全套魚5件組 - NT$1,799</option>
-                        <option value="3299">🌈 豪華全收藏組 (小象全套+魚全套) - NT$3,299</option>
-                        <option value="1499">🧸 超級配件包 (帽子+手持小物全配) - NT$1,499</option>
-                        <option value="699">✨ 純粹贊助無回饋 - NT$699 (暖心支持)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-cubes"></i> 數量</label>
-                    <input type="number" id="quantityInput" value="1" min="1" max="10" step="1">
-                </div>
-                <div class="price-preview" id="previewAmount">
-                    💰 預計支持金額：NT$ 399
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-user-astronaut"></i> 暱稱 / 顯示名稱 *</label>
-                    <input type="text" id="nicknameInput" placeholder="例如：小象愛好者" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-comment-dots"></i> 留下你想說的話 (留言欄位)</label>
-                    <textarea id="messageInput" rows="2" placeholder="分享你的支持心願或是給手作職人的鼓勵～"></textarea>
-                </div>
-                <button class="btn-support" id="supportBtn"><i class="fas fa-crown"></i> 登記支持並留言</button>
-                <p style="font-size: 0.7rem; margin-top: 0.5rem; text-align: center;">✓ 支持金額將累積至募資總額，留言將公開於感謝牆</p>
-            </div>
-
-            <!-- 右側留言區展示 / 支持者動態牆 -->
-            <div class="message-area">
-                <h4><i class="fas fa-users"></i> 暖心支持者留言牆</h4>
-                <div id="supportersMessageList" class="supporters-list">
-                    <!-- 動態渲染支持者列表 -->
-                    <div style="text-align: center; color:#be8f64;">💬 留言與支持紀錄會即時出現～</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 羊毛氈教學＋小技巧（呼應圖片內容） -->
-    <div class="tutorial">
-        <div class="step-list">
-            <h3><i class="fas fa-paintbrush-fine"></i> 羊毛製作6步驟</h3>
-            <ol>
-                <li><strong>骨架塑形</strong> – 白色羊毛做出頭大身小比例</li>
-                <li><strong>針刺固定</strong> – 戳針反覆戳刺，讓羊毛緊實</li>
-                <li><strong>分色覆蓋</strong> – 灰色羊毛＋白肚皮＋腮紅分層</li>
-                <li><strong>細節製作</strong> – 耳朵、帽子、配件分開製作再黏合</li>
-                <li><strong>表情關鍵</strong> – 眼睛位置略低更呆萌可愛</li>
-                <li><strong>最後修整</strong> – 修剪多餘毛絨，檢查整體比例</li>
-            </ol>
-        </div>
-        <div class="tip-box">
-            <h3><i class="fas fa-lightbulb"></i> 小技巧</h3>
-            <p>⭐ 羊毛要一層層鋪，不要一次太厚，更好塑形。<br>
-            ⭐ 配件可用少量羊毛戳製，再用白膠固定更牢固。<br>
-            ⭐ 完成後用剪刀修整毛流，表面更細緻可愛！<br>
-            ⭐ 磁吸/魔鬼氈設計讓帽子隨心情更換～超療癒！</p>
-            <div style="margin-top: 10px;"><i class="fas fa-heart" style="color:#e69462;"></i> 100% 手工羊毛氈，每隻都是獨一無二的心意</div>
-        </div>
-    </div>
-    <footer>
-        <i class="fas fa-seedling"></i> 療癒系羊毛娃娃 · 手作溫度募資計畫<br>
-        小象＆綠色魚系列 | 手機/包包吊飾 輕巧隨行 | 生日/節日送禮首選<br>
-        © 2025 羊毛氈創意實驗室  真實互動募資牆
-    </footer>
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar">
+  🌸 募資倒數：<span class="countdown-nums" id="countdown">14天 23:59:42</span> ｜ 限時優惠進行中！
 </div>
 
+<!-- VIEW TOGGLE -->
+<div id="view-toggle">
+  <button class="active" onclick="setView('desktop')">🖥️ 桌面版</button>
+  <button onclick="setView('mobile')">📱 手機版</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✨ 療癒系手工羊毛氈 募資計畫</div>
+  <div class="hero-emojis">🐘 🌸 🐊 🍓 ✨</div>
+  <h1>療癒系羊毛氈娃娃<br>小象 & 綠色鱷魚系列</h1>
+  <p class="hero-sub">純手工製作・造型多款・療癒超萌・送禮首選<br>每一隻都是獨一無二的心意 💕</p>
+</div>
+
+<!-- PRODUCT GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-inner">
+    <div class="gallery-title">📸 商品實拍展示</div>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="https://images.vocus.cc/b6cb4298-5147-4029-840a-bd619289c88b.png" alt="療癒系羊毛氈娃娃 - 小象鱷魚系列款式總覽與製作教學" loading="lazy">
+        <div class="gallery-caption">🐘🐊 款式總覽 & 製作步驟教學</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="https://images.vocus.cc/a2203a0e-865f-4dd4-beca-162e291ce9cf.png" alt="療癒系羊毛氈娃娃 - 模特展示" loading="lazy">
+        <div class="gallery-caption">💕 純手工製作・療癒超萌</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="https://images.vocus.cc/d1926b18-f165-46c5-aefb-ea5ae836920c.png" alt="療癒系羊毛氈吊飾 - 手機包包小吊飾" loading="lazy">
+        <div class="gallery-caption">🔑 療癒吊飾・手機/包包都好搭</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="https://images.vocus.cc/6d91dc86-0ce3-49dc-b812-1492fa417a94.png" alt="療癒系羊毛氈小配件 - 磁吸魔鬼氈配件" loading="lazy">
+        <div class="gallery-caption">🌸 磁吸配件・自由搭配造型</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-prev" onclick="event.stopPropagation(); moveLightbox(-1)">‹</button>
+  <div class="lb-img-wrap">
+    <img id="lb-img" src="" alt="">
+    <div class="lb-caption" id="lb-caption"></div>
+  </div>
+  <button class="lb-next" onclick="event.stopPropagation(); moveLightbox(1)">›</button>
+</div>
+
+<!-- STATS BAR -->
+<div class="progress-section">
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-value" id="stat-amount">$0</span>
+      <span class="stat-label">累計支持金額</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value green" id="stat-backers">0</span>
+      <span class="stat-label">支持人數</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value gold">200%</span>
+      <span class="stat-label">目標達成率</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>🎯 目標金額 $50,000</span>
+      <span class="progress-pct" id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+    </div>
+    <div class="progress-goal" id="progress-goal">還需要 $50,000 達成目標</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="section-tabs">
+  <button class="tab-btn active" onclick="switchTab('pledge')">💝 立即支持</button>
+  <button class="tab-btn" onclick="switchTab('board')">🏆 支持者榜單</button>
+  <button class="tab-btn" onclick="switchTab('comments')">💬 留言區</button>
+</div>
+
+<!-- TAB: PLEDGE -->
+<div class="tab-content active" id="tab-pledge">
+  <div class="main-content">
+
+    <!-- LEFT: PRODUCTS -->
+    <div>
+      <div class="products-section">
+        <div class="section-title">🛍️ 選擇支持方案</div>
+
+        <div class="product-card" onclick="selectProduct(this, '單隻娃娃（桌面擺飾）', 480)">
+          <div class="product-emoji">🐘</div>
+          <div class="product-name">單隻娃娃（桌面擺飾）<span class="product-tag">最熱門</span></div>
+          <div class="product-desc">小象系列或鱷魚系列任選一款・純手工羊毛氈・尺寸約10cm・磁吸配件可搭配</div>
+          <div class="product-price">NT$480 <span>/ 隻</span></div>
+        </div>
+
+        <div class="product-card" onclick="selectProduct(this, '療癒吊飾（手機/包包）', 380)">
+          <div class="product-emoji">🔑</div>
+          <div class="product-name">療癒吊飾（手機/包包）</div>
+          <div class="product-desc">小象+鱷魚系列任選一款・高質感五金扣・隨身療癒、輕巧便攜</div>
+          <div class="product-price">NT$380 <span>/ 個</span></div>
+        </div>
+
+        <div class="product-card" onclick="selectProduct(this, '合照雙人組（娃娃×2）', 880)">
+          <div class="product-emoji">🐘🐊</div>
+          <div class="product-name">合照雙人組（娃娃×2）<span class="product-tag">超值</span></div>
+          <div class="product-desc">小象+鱷魚各一隻・可選合照主題（森林派對/睡眠時光）・含場景配件</div>
+          <div class="product-price">NT$880 <span>/ 組</span></div>
+        </div>
+
+        <div class="product-card" onclick="selectProduct(this, '小配件組合包', 220)">
+          <div class="product-emoji">🌸</div>
+          <div class="product-name">小配件組合包</div>
+          <div class="product-desc">磁吸帽子×3 + 手持小物×5・自由搭配打造專屬造型・魔鬼氈設計輕鬆替換</div>
+          <div class="product-price">NT$220 <span>/ 包</span></div>
+        </div>
+
+        <div class="product-card" onclick="selectProduct(this, '超值全套收藏組', 1680)">
+          <div class="product-emoji">✨</div>
+          <div class="product-name">超值全套收藏組<span class="product-tag">限量</span></div>
+          <div class="product-desc">娃娃×3 + 吊飾×2 + 配件大禮包・含精美收藏禮盒・限量50組</div>
+          <div class="product-price">NT$1,680 <span>/ 套</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="pledge-section">
+      <div class="form-card">
+        <div class="section-title">💌 填寫支持資訊</div>
+
+        <div class="form-group">
+          <label class="form-label">您的名稱 <span>*</span></label>
+          <input type="text" id="inp-name" class="form-input" placeholder="輸入您的暱稱或姓名">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email <span>*</span></label>
+          <input type="email" id="inp-email" class="form-input" placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">選擇方案 <span>*</span></label>
+          <select id="inp-product" class="form-select" onchange="syncProductSelect()">
+            <option value="">-- 請選擇或點擊左側方案 --</option>
+            <option value="480|單隻娃娃（桌面擺飾）">🐘 單隻娃娃（桌面擺飾）NT$480</option>
+            <option value="380|療癒吊飾（手機/包包）">🔑 療癒吊飾（手機/包包）NT$380</option>
+            <option value="880|合照雙人組（娃娃×2）">🐘🐊 合照雙人組 NT$880</option>
+            <option value="220|小配件組合包">🌸 小配件組合包 NT$220</option>
+            <option value="1680|超值全套收藏組">✨ 超值全套收藏組 NT$1,680</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">數量</label>
+          <input type="number" id="inp-qty" class="form-input" value="1" min="1" max="20" oninput="updateTotal()">
+        </div>
+
+        <div style="background: var(--pink-light); border-radius: 14px; padding: 16px; margin-bottom: 20px; text-align: center;">
+          <div style="font-size: 12px; color: var(--text-light); margin-bottom: 4px;">支持金額合計</div>
+          <div style="font-size: 32px; font-weight: 900; color: var(--pink-deep);" id="total-display">NT$0</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">留下您的鼓勵話語 💬</label>
+          <textarea id="inp-comment" class="form-textarea" placeholder="給創作者的話、您的期待，或祝福的話語..."></textarea>
+        </div>
+
+        <button class="btn-submit" onclick="openPayModal()">
+          💳 前往付款支持
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: LEADERBOARD -->
+<div class="tab-content" id="tab-board">
+  <div class="leaderboard-section">
+    <div class="leaderboard-card">
+      <div class="section-title">🏆 支持者榜單</div>
+      <div id="leaderboard-list">
+        <div class="empty-state">
+          <span class="empty-state-emoji">🐘</span>
+          成為第一位支持者！您的名字將出現在這裡 💕
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: COMMENTS -->
+<div class="tab-content" id="tab-comments">
+  <div class="comments-section">
+    <div class="leaderboard-card" style="margin-bottom:20px;">
+      <div class="section-title">💬 留言牆</div>
+      <div id="comments-list">
+        <div class="empty-state">
+          <span class="empty-state-emoji">💌</span>
+          支持並留言，讓創作者看到你的愛！
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="modal-overlay" id="pay-modal">
+  <div class="modal">
+    <div class="modal-icon">💳</div>
+    <div class="modal-title">確認付款</div>
+    <div class="modal-sub" id="modal-product-name">請確認您的支持方案</div>
+    <div class="modal-amount" id="modal-amount-display">NT$0</div>
+
+    <div style="background: #F5F5F5; border-radius: 14px; padding: 16px; margin-bottom: 20px; text-align: left; font-size: 13px; line-height: 2;">
+      <div>👤 支持者：<strong id="modal-name">-</strong></div>
+      <div>📦 方案：<strong id="modal-product">-</strong></div>
+      <div>🔢 數量：<strong id="modal-qty">-</strong></div>
+    </div>
+
+    <!-- FAKE PAYMENT BUTTONS -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:12px;color:var(--text-light);margin-bottom:8px;text-align:left;font-weight:700;">選擇付款方式</div>
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <button onclick="selectPayment(this,'💳 信用卡')" style="flex:1;padding:10px;border:2px solid var(--pink-light);border-radius:10px;background:white;cursor:pointer;font-size:13px;transition:all 0.2s;" class="pay-method-btn">💳 信用卡</button>
+        <button onclick="selectPayment(this,'📱 LINE Pay')" style="flex:1;padding:10px;border:2px solid var(--pink-light);border-radius:10px;background:white;cursor:pointer;font-size:13px;transition:all 0.2s;" class="pay-method-btn">📱 LINE Pay</button>
+        <button onclick="selectPayment(this,'🏦 轉帳')" style="flex:1;padding:10px;border:2px solid var(--pink-light);border-radius:10px;background:white;cursor:pointer;font-size:13px;transition:all 0.2s;" class="pay-method-btn">🏦 轉帳</button>
+      </div>
+    </div>
+
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">取消</button>
+      <button class="btn-pay" onclick="confirmPayment()">✅ 確認付款</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">🎉 付款成功！感謝您的支持！</div>
+
 <script>
-    // ---------- 真實支持資料庫 (前端模擬) ----------
-    // 支持記錄陣列，每個記錄包含 暱稱、方案名稱、支持總金額、留言、時間戳
-    let supportRecords = [];
+  // ===== STATE =====
+  let totalAmount = 0;
+  let totalBackers = 0;
+  let supporters = [];
+  let comments = [];
+  const GOAL = 50000;
 
-    // 預設展示幾筆溫暖的留言範例 (讓頁面活潑)
-    const defaultSupports = [
-        {
-            nickname: "羊毛控小咪",
-            planName: "豪華全收藏組 (小象全套+魚全套) x1",
-            amount: 3299,
-            message: "太可愛了！磁吸帽子設計真的超心動，期待收到恐龍裝魚！",
-            timestamp: "2025-04-28 10:23"
-        },
-        {
-            nickname: "象鼻子粉圓",
-            planName: "全套小象5件組 x1",
-            amount: 1799,
-            message: "草莓小象和雲朵小象太療癒，送給自己生日禮物🎂",
-            timestamp: "2025-04-27 18:42"
-        },
-        {
-            nickname: "魚兒水中游",
-            planName: "單款小象 / 單款魚 x2",
-            amount: 798,
-            message: "西瓜魚跟派對魚掛在包包上，心情都變好了！支持手工❤️",
-            timestamp: "2025-04-26 09:15"
-        }
-    ];
+  let currentProduct = '';
+  let currentPrice = 0;
+  let selectedPayMethod = '';
 
-    // 初始化載入預設資料
-    function initDefaultData() {
-        if (supportRecords.length === 0) {
-            supportRecords.push(...defaultSupports);
-        }
-        renderAll();
+  const avatarEmojis = ['🐘','🐊','🌸','🍓','🌙','⭐','🎀','🎪','🦋','🌻','🍦','🎠','🐣','🌈'];
+
+  // ===== COUNTDOWN =====
+  function updateCountdown() {
+    const end = new Date();
+    end.setDate(end.getDate() + 14);
+    const now = new Date();
+    const diff = end - now;
+    const d = Math.floor(diff / 86400000);
+    const h = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+    const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+    const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    document.getElementById('countdown').textContent = `${d}天 ${h}:${m}:${s}`;
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // ===== VIEW TOGGLE =====
+  function setView(mode) {
+    document.querySelectorAll('#view-toggle button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    if (mode === 'mobile') {
+      document.body.classList.add('mobile-view');
+    } else {
+      document.body.classList.remove('mobile-view');
+    }
+  }
+
+  // ===== PRODUCT SELECT =====
+  function selectProduct(el, name, price) {
+    document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    currentProduct = name;
+    currentPrice = price;
+    const sel = document.getElementById('inp-product');
+    for (let opt of sel.options) {
+      if (opt.value === `${price}|${name}`) { sel.value = opt.value; break; }
+    }
+    updateTotal();
+  }
+
+  function syncProductSelect() {
+    const val = document.getElementById('inp-product').value;
+    if (!val) return;
+    const [price, name] = val.split('|');
+    currentPrice = parseInt(price);
+    currentProduct = name;
+    document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+    updateTotal();
+  }
+
+  function updateTotal() {
+    const qty = parseInt(document.getElementById('inp-qty').value) || 1;
+    const total = currentPrice * qty;
+    document.getElementById('total-display').textContent = total > 0 ? `NT$${total.toLocaleString()}` : 'NT$0';
+  }
+
+  // ===== PAYMENT MODAL =====
+  function openPayModal() {
+    const name = document.getElementById('inp-name').value.trim();
+    const email = document.getElementById('inp-email').value.trim();
+    const qty = parseInt(document.getElementById('inp-qty').value) || 1;
+
+    if (!name) { showToast('⚠️ 請填寫您的名稱！', '#FF6B6B'); return; }
+    if (!email) { showToast('⚠️ 請填寫 Email！', '#FF6B6B'); return; }
+    if (!currentProduct) { showToast('⚠️ 請選擇支持方案！', '#FF6B6B'); return; }
+
+    const total = currentPrice * qty;
+    document.getElementById('modal-product-name').textContent = `${currentProduct} × ${qty}`;
+    document.getElementById('modal-amount-display').textContent = `NT$${total.toLocaleString()}`;
+    document.getElementById('modal-name').textContent = name;
+    document.getElementById('modal-product').textContent = currentProduct;
+    document.getElementById('modal-qty').textContent = qty;
+    selectedPayMethod = '';
+    document.querySelectorAll('.pay-method-btn').forEach(b => {
+      b.style.borderColor = 'var(--pink-light)';
+      b.style.background = 'white';
+    });
+    document.getElementById('pay-modal').classList.add('open');
+  }
+
+  function closeModal() {
+    document.getElementById('pay-modal').classList.remove('open');
+  }
+
+  function selectPayment(btn, method) {
+    selectedPayMethod = method;
+    document.querySelectorAll('.pay-method-btn').forEach(b => {
+      b.style.borderColor = 'var(--pink-light)';
+      b.style.background = 'white';
+    });
+    btn.style.borderColor = 'var(--pink-deep)';
+    btn.style.background = 'var(--pink-light)';
+  }
+
+  function confirmPayment() {
+    if (!selectedPayMethod) { showToast('⚠️ 請選擇付款方式！', '#FF6B6B'); return; }
+
+    const name = document.getElementById('inp-name').value.trim();
+    const comment = document.getElementById('inp-comment').value.trim();
+    const qty = parseInt(document.getElementById('inp-qty').value) || 1;
+    const amount = currentPrice * qty;
+
+    // ADD TO STATS
+    totalAmount += amount;
+    totalBackers += 1;
+
+    // UPDATE UI
+    animateCount('stat-amount', totalAmount, true);
+    animateCount('stat-backers', totalBackers, false);
+    updateProgress();
+
+    // ADD SUPPORTER
+    const supporter = {
+      name, amount, product: currentProduct, comment,
+      time: new Date(), avatar: avatarEmojis[Math.floor(Math.random() * avatarEmojis.length)]
+    };
+    supporters.push(supporter);
+    supporters.sort((a, b) => b.amount - a.amount);
+
+    // ADD COMMENT
+    if (comment) comments.unshift({ name, comment, amount, time: new Date(), avatar: supporter.avatar });
+
+    renderLeaderboard();
+    renderComments();
+    closeModal();
+    showToast(`🎉 付款成功！感謝 ${name} 的支持！`);
+    launchConfetti();
+
+    // RESET FORM
+    document.getElementById('inp-name').value = '';
+    document.getElementById('inp-email').value = '';
+    document.getElementById('inp-comment').value = '';
+    document.getElementById('inp-product').value = '';
+    document.getElementById('inp-qty').value = '1';
+    document.getElementById('total-display').textContent = 'NT$0';
+    document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
+    currentProduct = ''; currentPrice = 0;
+  }
+
+  // ===== ANIMATE COUNT =====
+  function animateCount(id, target, isCurrency) {
+    const el = document.getElementById(id);
+    const start = isCurrency ? parseInt(el.textContent.replace(/[^0-9]/g, '')) || 0 : parseInt(el.textContent) || 0;
+    const duration = 1000;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(start + (target - start) * ease);
+      el.textContent = isCurrency ? `$${current.toLocaleString()}` : current;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  // ===== PROGRESS =====
+  function updateProgress() {
+    const pct = Math.min((totalAmount / GOAL) * 100, 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent = Math.round(pct) + '%';
+    const rem = Math.max(GOAL - totalAmount, 0);
+    document.getElementById('progress-goal').textContent =
+      rem > 0 ? `還需要 $${rem.toLocaleString()} 達成目標` : '🎉 已達成目標！感謝所有支持者！';
+  }
+
+  // ===== LEADERBOARD =====
+  function renderLeaderboard() {
+    const el = document.getElementById('leaderboard-list');
+    if (!supporters.length) {
+      el.innerHTML = '<div class="empty-state"><span class="empty-state-emoji">🐘</span>成為第一位支持者！您的名字將出現在這裡 💕</div>';
+      return;
     }
 
-    // 取得方案對應顯示名稱 (輔助)
-    function getPlanDisplayText(selectValue, quantity) {
-        let name = "";
-        switch(selectValue) {
-            case "399": name = "單款小象 / 單款魚"; break;
-            case "1799": 
-                // 但下拉有兩個1799，為了區分，從選項文字抓取更精準
-                const planSelectElem = document.getElementById("planSelect");
-                const selectedText = planSelectElem.options[planSelectElem.selectedIndex]?.text;
-                if (selectedText.includes("全套小象")) name = "全套小象5件組";
-                else if (selectedText.includes("全套魚")) name = "全套魚5件組";
-                else name = "全套組";
-                break;
-            case "3299": name = "豪華全收藏組"; break;
-            case "1499": name = "超級配件包"; break;
-            case "699": name = "純粹贊助無回饋"; break;
-            default: name = "熱情支持";
-        }
-        // 若為1799但無法區分，重新處理
-        if(selectValue === "1799" && name === "全套組") {
-            const idx = document.getElementById("planSelect").selectedIndex;
-            const txt = document.getElementById("planSelect").options[idx].text;
-            if(txt.includes("小象5")) name = "全套小象5件組";
-            else if(txt.includes("魚5")) name = "全套魚5件組";
-            else name = "全套組";
-        }
-        return `${name} x${quantity}`;
+    el.innerHTML = supporters.map((s, i) => {
+      const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+      const rankIcon = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1;
+      const timeStr = s.time.toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' });
+      const dateStr = s.time.toLocaleDateString('zh-TW', { month: '2-digit', day: '2-digit' });
+      return `
+        <div class="supporter-item">
+          <div class="supporter-rank ${rankClass}">${rankIcon}</div>
+          <div class="supporter-avatar">${s.avatar}</div>
+          <div class="supporter-info">
+            <div class="supporter-name">${s.name}</div>
+            <div class="supporter-product">📦 ${s.product}</div>
+            ${s.comment ? `<div class="supporter-comment">「${s.comment}」</div>` : ''}
+          </div>
+          <div>
+            <div class="supporter-amount">NT$${s.amount.toLocaleString()}</div>
+            <div class="supporter-time">${dateStr} ${timeStr}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // ===== COMMENTS =====
+  function renderComments() {
+    const el = document.getElementById('comments-list');
+    if (!comments.length) {
+      el.innerHTML = '<div class="empty-state"><span class="empty-state-emoji">💌</span>支持並留言，讓創作者看到你的愛！</div>';
+      return;
     }
+    el.innerHTML = comments.map(c => {
+      const timeStr = c.time.toLocaleString('zh-TW', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+      return `
+        <div class="comment-item">
+          <div class="comment-header">
+            <div class="comment-avatar">${c.avatar}</div>
+            <div class="comment-name">${c.name}</div>
+            <div class="comment-time">${timeStr}</div>
+          </div>
+          <div class="comment-text">${c.comment}</div>
+          <div class="comment-paid">✅ 已付款支持 NT$${c.amount.toLocaleString()}</div>
+        </div>
+      `;
+    }).join('');
+  }
 
-    // 更新募資總額進度 + 人數 + 留言牆 + 進度條
-    function renderAll() {
-        // 計算總募集金額
-        const totalRaised = supportRecords.reduce((sum, record) => sum + record.amount, 0);
-        const target = 200000;
-        const percent = Math.min(100, (totalRaised / target) * 100);
-        document.getElementById("totalRaisedDisplay").innerText = `NT$ ${totalRaised.toLocaleString()}`;
-        document.getElementById("backerCount").innerText = supportRecords.length;
-        const progressFill = document.getElementById("progressFill");
-        progressFill.style.width = `${percent}%`;
-        document.getElementById("progressPercent").innerText = `${Math.floor(percent)}% 達成`;
+  // ===== TABS =====
+  function switchTab(id) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
 
-        // 渲染支持者留言牆 (依時間排序，最新的優先)
-        const container = document.getElementById("supportersMessageList");
-        if (supportRecords.length === 0) {
-            container.innerHTML = '<div style="text-align:center; padding:20px;">✨ 成為第一個支持者，留下溫暖留言 ✨</div>';
-            return;
-        }
-        // 複製陣列並由新到舊排序 (依照timestamp)
-        const sorted = [...supportRecords].reverse();
-        container.innerHTML = sorted.map(record => `
-            <div class="message-card">
-                <div class="message-header">
-                    <span class="msg-name"><i class="fas fa-paw"></i> ${escapeHtml(record.nickname)}</span>
-                    <span class="msg-amount">💖 NT$${record.amount.toLocaleString()}</span>
-                </div>
-                <div class="msg-plan"><i class="fas fa-tag"></i> ${escapeHtml(record.planName)}</div>
-                <div class="msg-text">📝 “ ${escapeHtml(record.message) || '沒有留下留言，但以行動表示支持！'} ”</div>
-                <div class="msg-time"><i class="far fa-clock"></i> ${record.timestamp || '剛剛支持'}</div>
-            </div>
-        `).join('');
+  // ===== TOAST =====
+  function showToast(msg, color = 'var(--pink-deep)') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.borderLeftColor = color;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  // ===== CONFETTI =====
+  function launchConfetti() {
+    const colors = ['#FFB5C8','#7DC67A','#FFD166','#FF7BAC','#A8E6CF'];
+    const emojis = ['🌸','✨','🎉','💕','🐘','🐊'];
+    for (let i = 0; i < 24; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.style.cssText = `
+          position:fixed; left:${Math.random()*100}vw; top:-20px;
+          font-size:${Math.random()*16+12}px; z-index:9999;
+          pointer-events:none; animation:confettiFall ${Math.random()*1+1}s ease-in forwards;
+        `;
+        c.textContent = Math.random() > 0.5 ? emojis[Math.floor(Math.random()*emojis.length)] : '●';
+        if (c.textContent === '●') c.style.color = colors[Math.floor(Math.random()*colors.length)];
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 2000);
+      }, i * 60);
     }
+  }
 
-    // 簡易防XSS
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if(m === '&') return '&amp;';
-            if(m === '<') return '&lt;';
-            if(m === '>') return '&gt;';
-            return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
-        });
-    }
+  // ===== LIGHTBOX =====
+  const lbImages = [
+    { src: 'https://images.vocus.cc/b6cb4298-5147-4029-840a-bd619289c88b.png', caption: '🐘🐊 款式總覽 & 羊毛氈製作步驟教學' },
+    { src: 'https://images.vocus.cc/a2203a0e-865f-4dd4-beca-162e291ce9cf.png', caption: '💕 療癒系羊毛氈娃娃・純手工製作・送禮首選' },
+    { src: 'https://images.vocus.cc/d1926b18-f165-46c5-aefb-ea5ae836920c.png', caption: '🔑 療癒系吊飾・掛手機超可愛・掛包包也吸睛！' },
+    { src: 'https://images.vocus.cc/6d91dc86-0ce3-49dc-b812-1492fa417a94.png', caption: '🌸 療癒系羊毛氈小配件・磁吸/魔鬼氈設計・自由搭配可愛加倍！' },
+  ];
+  let lbCurrent = 0;
 
-    // 取得當前方案單價
-    function getCurrentUnitPrice() {
-        const select = document.getElementById("planSelect");
-        const priceValue = select.value;
-        return parseInt(priceValue, 10);
-    }
+  function openLightbox(idx) {
+    lbCurrent = idx;
+    renderLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 
-    // 更新預覽金額 (數量變動或方案變動)
-    function updatePreview() {
-        const price = getCurrentUnitPrice();
-        let quantity = parseInt(document.getElementById("quantityInput").value, 10);
-        if (isNaN(quantity) || quantity < 1) quantity = 1;
-        const total = price * quantity;
-        document.getElementById("previewAmount").innerHTML = `💰 預計支持金額：NT$ ${total.toLocaleString()}`;
-        return total;
-    }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-    // 取得完整方案顯示名稱（詳細）
-    function getFullPlanName() {
-        const select = document.getElementById("planSelect");
-        const selectedValue = select.value;
-        const quantity = parseInt(document.getElementById("quantityInput").value, 10);
-        let baseName = "";
-        const selectedText = select.options[select.selectedIndex].text;
-        if (selectedValue === "399") baseName = "單款小象/魚";
-        else if (selectedValue === "1799") {
-            if(selectedText.includes("全套小象")) baseName = "全套小象5件組";
-            else if(selectedText.includes("全套魚")) baseName = "全套魚5件組";
-            else baseName = "全套組合";
-        }
-        else if (selectedValue === "3299") baseName = "豪華全收藏組";
-        else if (selectedValue === "1499") baseName = "超級配件包";
-        else if (selectedValue === "699") baseName = "純粹贊助 (心意支持)";
-        else baseName = "支持方案";
-        return `${baseName} x${quantity}`;
-    }
+  function moveLightbox(dir) {
+    lbCurrent = (lbCurrent + dir + lbImages.length) % lbImages.length;
+    renderLightbox();
+  }
 
-    // 登記支持 （真實金額計算＆留言記錄）
-    function registerSupport() {
-        // 取得表單資料
-        const nickname = document.getElementById("nicknameInput").value.trim();
-        if (!nickname) {
-            alert("💛 請輸入暱稱，讓感謝牆上有你的名字～");
-            return;
-        }
-        let quantity = parseInt(document.getElementById("quantityInput").value, 10);
-        if (isNaN(quantity) || quantity < 1) quantity = 1;
-        const unitPrice = getCurrentUnitPrice();
-        const totalAmount = unitPrice * quantity;
-        if (totalAmount <= 0) {
-            alert("支持金額需大於0");
-            return;
-        }
-        const message = document.getElementById("messageInput").value.trim();
-        const planDisplay = getFullPlanName();   // 漂亮方案名稱
+  function renderLightbox() {
+    const imgEl = document.getElementById('lb-img');
+    imgEl.style.opacity = '0';
+    imgEl.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      imgEl.src = lbImages[lbCurrent].src;
+      imgEl.alt = lbImages[lbCurrent].caption;
+      document.getElementById('lb-caption').textContent = lbImages[lbCurrent].caption;
+      imgEl.style.transition = 'opacity 0.25s, transform 0.25s';
+      imgEl.style.opacity = '1';
+      imgEl.style.transform = 'scale(1)';
+    }, 100);
+  }
 
-        // 建立新的支持記錄
-        const now = new Date();
-        const timestamp = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-        const newRecord = {
-            nickname: nickname,
-            planName: planDisplay,
-            amount: totalAmount,
-            message: message === "" ? "默默支持，溫暖相挺！" : message,
-            timestamp: timestamp
-        };
+  document.addEventListener('keydown', e => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') moveLightbox(-1);
+    if (e.key === 'ArrowRight') moveLightbox(1);
+  });
 
-        // 加入陣列
-        supportRecords.push(newRecord);
-        // 重新渲染進度與留言牆
-        renderAll();
+  // Close modal on overlay click
+  document.getElementById('pay-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
 
-        // 清空留言欄位但保留暱稱 (方便連續支持，但保留個資彈性? 清空留言可保留暱稱可選)
-        document.getElementById("messageInput").value = "";
-        // 也可以不清除暱稱，但使用者舒服就好，不做強制重置數量
-        // 顯示成功訊息
-        alert(`🎉 感謝 ${nickname} 的支持！\n贊助金額 NT$${totalAmount.toLocaleString()} 已計入募資總額。\n你的留言將出現在暖心牆上！`);
-
-        // 可選: 不重置數量，但讓預覽正確 (+方案不重置)
-        // 小細節: 更新募集金額後重新確保預覽對應方案尚未改變
-        updatePreview();
-    }
-
-    // 綁定即時預覽事件
-    function bindEvents() {
-        const planSelect = document.getElementById("planSelect");
-        const quantityInput = document.getElementById("quantityInput");
-        const supportBtn = document.getElementById("supportBtn");
-
-        planSelect.addEventListener("change", () => updatePreview());
-        quantityInput.addEventListener("input", () => updatePreview());
-        supportBtn.addEventListener("click", registerSupport);
-    }
-
-    // 初始化預覽金額與資料
-    function init() {
-        initDefaultData();
-        bindEvents();
-        updatePreview(); // 初始預設價格顯示
-    }
-
-    init();
+  // Initialize displays
+  updateProgress();
+  renderLeaderboard();
+  renderComments();
 </script>
 </body>
 </html>
