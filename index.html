@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>療癒系編織小象＆鱷魚 | 手作募資計畫</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ee;
+    --warm-tan: #e8d5b7;
+    --sage: #8aaa7c;
+    --deep-sage: #5a7a52;
+    --dusty-rose: #d4a0a0;
+    --warm-pink: #f0c4c4;
+    --elephant-gray: #c8bdb0;
+    --croc-green: #7da668;
+    --gold: #c8a45a;
+    --dark-brown: #3d2b1f;
+    --text-main: #3d2b1f;
+    --text-muted: #7a6a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-main);
+    font-family: 'Noto Serif TC', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(138,170,124,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(212,160,160,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(200,164,90,0.08) 0%, transparent 70%),
+      var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(138,170,124,0.3);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation: rotateSlow 40s linear infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    border: 1px dashed rgba(212,160,160,0.2);
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    animation: rotateSlow 60s linear infinite reverse;
+  }
+
+  @keyframes rotateSlow { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--warm-pink);
+    color: var(--dark-brown);
+    font-size: 0.78rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.7s 0.1s ease both;
+    background: linear-gradient(135deg, var(--dark-brown) 0%, var(--deep-sage) 50%, var(--dark-brown) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-title em {
+    font-style: normal;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(135deg, var(--croc-green), var(--deep-sage));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    position: relative; z-index: 1;
+    animation: fadeUp 0.7s 0.2s ease both;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-animals {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.7s 0.3s ease both;
+    flex-wrap: wrap;
+  }
+
+  .animal-emoji {
+    font-size: 5rem;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.12));
+    animation: float 3s ease-in-out infinite;
+  }
+  .animal-emoji:nth-child(2) { animation-delay: 1.5s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* ── PROGRESS SECTION ── */
+  .progress-section {
+    background: #fff;
+    margin: 0 auto;
+    max-width: 800px;
+    border-radius: 28px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 20px 60px rgba(61,43,31,0.1);
+    position: relative;
+    z-index: 10;
+    margin-top: -3rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+
+  .progress-amount {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--deep-sage);
+  }
+
+  .progress-goal {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .progress-bar-bg {
+    background: var(--warm-tan);
+    border-radius: 100px;
+    height: 18px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage), var(--deep-sage));
+    border-radius: 100px;
+    width: 0%;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s 2s infinite;
+  }
+
+  @keyframes shimmer {
+    to { left: 200%; }
+  }
+
+  .progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-item { padding: 0.5rem; }
+
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--dark-brown);
+    display: block;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .stat-divider {
+    width: 1px;
+    background: var(--warm-tan);
+    margin: auto;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown-bar {
+    background: linear-gradient(135deg, var(--deep-sage), var(--croc-green));
+    color: white;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+  }
+
+  .countdown-nums {
+    display: inline-flex;
+    gap: 0.5rem;
+    margin-left: 1rem;
+    align-items: center;
+  }
+
+  .countdown-block {
+    background: rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 0.2rem 0.6rem;
+    font-size: 1.3rem;
+    min-width: 2.5rem;
+  }
+
+  .countdown-sep { opacity: 0.6; }
+
+  /* ── SECTION ── */
+  .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--warm-pink);
+    color: var(--dark-brown);
+    font-size: 0.75rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  /* ── VARIANTS GRID ── */
+  .variants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .variant-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.8rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .variant-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--warm-pink), var(--warm-tan));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .variant-card:hover, .variant-card.selected {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(61,43,31,0.15);
+    border-color: var(--sage);
+  }
+
+  .variant-card:hover::before, .variant-card.selected::before { opacity: 0.15; }
+
+  .variant-emoji { font-size: 3rem; margin-bottom: 0.8rem; display: block; position: relative; z-index:1; }
+  .variant-name { font-weight: 700; font-size: 1rem; position: relative; z-index:1; }
+  .variant-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; position: relative; z-index:1; }
+
+  .variant-card.selected .variant-name { color: var(--deep-sage); }
+
+  .selected-badge {
+    position: absolute;
+    top: 0.7rem; right: 0.7rem;
+    background: var(--sage);
+    color: white;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    padding: 0.2rem 0.5rem;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .variant-card.selected .selected-badge { opacity: 1; }
+
+  /* ── PACKAGES ── */
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pkg-card {
+    border-radius: 24px;
+    padding: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .pkg-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(61,43,31,0.18); }
+
+  .pkg-elephant { background: linear-gradient(145deg, #f0ebe4, #e8ddd2); }
+  .pkg-croc { background: linear-gradient(145deg, #e4ede0, #d4e4ce); }
+  .pkg-pair { background: linear-gradient(145deg, #3d2b1f, #5a3d2b); color: white; }
+
+  .pkg-popular {
+    position: absolute;
+    top: 1.2rem; right: 1.2rem;
+    background: var(--gold);
+    color: white;
+    font-size: 0.7rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+  }
+
+  .pkg-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+  .pkg-name { font-size: 1.4rem; font-weight: 900; margin-bottom: 0.5rem; }
+  .pkg-price { font-size: 2rem; font-weight: 900; color: var(--deep-sage); margin: 0.8rem 0; font-family: 'Nunito', sans-serif; }
+  .pkg-pair .pkg-price { color: var(--warm-pink); }
+  .pkg-includes { font-size: 0.85rem; line-height: 2; opacity: 0.8; }
+  .pkg-includes li { list-style: none; }
+  .pkg-includes li::before { content: '✦ '; color: var(--gold); }
+
+  .pkg-btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 100px;
+    border: none;
+    margin-top: 1.5rem;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .pkg-btn:hover { opacity: 0.85; transform: scale(1.02); }
+  .pkg-elephant .pkg-btn { background: var(--dark-brown); color: white; }
+  .pkg-croc .pkg-btn { background: var(--deep-sage); color: white; }
+  .pkg-pair .pkg-btn { background: var(--warm-pink); color: var(--dark-brown); }
+
+  /* ── FEATURES ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .feature-item {
+    padding: 2rem;
+    border-radius: 20px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(61,43,31,0.06);
+  }
+
+  .feature-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.6rem;
+  }
+
+  .fi-green { background: rgba(138,170,124,0.2); }
+  .fi-pink { background: rgba(212,160,160,0.2); }
+  .fi-gold { background: rgba(200,164,90,0.2); }
+  .fi-tan { background: rgba(200,189,176,0.2); }
+
+  .feature-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .feature-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ── TIMELINE ── */
+  .timeline { margin-top: 3rem; position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--warm-pink), var(--sage), var(--warm-tan));
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .tl-item.visible { opacity: 1; transform: none; }
+
+  .tl-dot {
+    width: 2rem; height: 2rem;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--sage);
+    flex-shrink: 0;
+    margin-left: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--deep-sage);
+  }
+
+  .tl-content { flex: 1; }
+  .tl-date { font-size: 0.78rem; color: var(--text-muted); font-family: 'Nunito', sans-serif; font-weight: 700; margin-bottom: 0.3rem; }
+  .tl-title { font-weight: 700; font-size: 1rem; }
+  .tl-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testi-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.8rem;
+    box-shadow: 0 4px 20px rgba(61,43,31,0.07);
+    position: relative;
+  }
+
+  .testi-card::before {
+    content: '❝';
+    font-size: 3rem;
+    color: var(--warm-pink);
+    position: absolute;
+    top: 0.5rem; left: 1.2rem;
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  .testi-text { font-size: 0.9rem; line-height: 1.8; margin-top: 1rem; }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; margin-top: 1.2rem; }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--warm-tan); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .testi-name { font-weight: 700; font-size: 0.85rem; }
+  .testi-stars { color: var(--gold); font-size: 0.75rem; }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--dark-brown), #5a3d2b);
+    color: white;
+    border-radius: 32px;
+    padding: 4rem 3rem;
+    text-align: center;
+    margin: 0 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '🐘🐊🐘🐊🐘🐊';
+    position: absolute;
+    font-size: 5rem;
+    opacity: 0.05;
+    bottom: -1rem;
+    left: 0; right: 0;
+    letter-spacing: 1rem;
+  }
+
+  .cta-title { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; }
+  .cta-sub { opacity: 0.75; margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; }
+
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary, .btn-secondary {
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .btn-primary { background: var(--warm-pink); color: var(--dark-brown); }
+  .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+  .btn-primary:hover, .btn-secondary:hover { transform: scale(1.05); opacity: 0.9; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--warm-tan);
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(6rem);
+    background: var(--dark-brown);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 1000;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STICKY CART ── */
+  .sticky-cart {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    box-shadow: 0 -10px 40px rgba(61,43,31,0.12);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform 0.4s;
+  }
+
+  .sticky-cart.visible { transform: translateY(0); }
+  .cart-info { font-size: 0.9rem; }
+  .cart-info strong { color: var(--deep-sage); font-size: 1.1rem; }
+
+  .cart-btn {
+    background: var(--deep-sage);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .cart-btn:hover { opacity: 0.85; }
+
+  /* scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    .progress-section { padding: 1.5rem; margin: -2rem 1rem 0; }
+    .progress-stats { grid-template-columns: repeat(3,1fr); gap: 0.5rem; }
+    .stat-num { font-size: 1.3rem; }
+    .cta-section { padding: 2.5rem 1.5rem; margin: 0 1rem 3rem; }
+    .timeline::before { left: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🌿 療癒系手作募資計畫 · 2026</div>
+  <h1 class="hero-title">編織小象<br>＆<em>鱷魚</em></h1>
+  <p class="hero-subtitle">手作編織 · 可愛隨身帶著走<br>每一隻都是獨一無二的療癒小夥伴</p>
+  <div class="hero-animals">
+    <div class="animal-emoji">🐘</div>
+    <div style="font-size:2rem;color:var(--warm-tan);">♡</div>
+    <div class="animal-emoji">🐊</div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<div style="padding: 0 2rem; max-width: 900px; margin: 0 auto;">
+  <div class="progress-section">
+    <div class="progress-header">
+      <div>
+        <div class="progress-amount" id="amountDisplay">NT$ 0</div>
+        <div class="progress-goal">目標金額 NT$150,000</div>
+      </div>
+      <div style="text-align:right;">
+        <div id="percentDisplay" style="font-size:2rem;font-weight:900;font-family:'Nunito',sans-serif;color:var(--sage)">0%</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);">達成率</div>
+      </div>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-stats">
+      <div class="stat-item">
+        <span class="stat-num" id="backerCount">0</span>
+        <div class="stat-label">支持人數</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="daysLeft">21</span>
+        <div class="stat-label">剩餘天數</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <div class="stat-label">手工製作</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar" style="margin-top:2rem;">
+  ⏰ 募資截止倒數
+  <span class="countdown-nums">
+    <span class="countdown-block" id="cd-d">21</span>天
+    <span class="countdown-block" id="cd-h">00</span>時
+    <span class="countdown-sep">:</span>
+    <span class="countdown-block" id="cd-m">00</span>分
+    <span class="countdown-sep">:</span>
+    <span class="countdown-block" id="cd-s">00</span>秒
+  </span>
+</div>
+
+<!-- VARIANTS -->
+<section class="section reveal" id="variants">
+  <div>
+    <span class="section-tag">選擇款式</span>
+    <h2 class="section-title">你喜歡哪一款？</h2>
+    <p class="section-sub">小象與鱷魚各有多種個性造型，點選你最心儀的款式，讓療癒小夥伴陪伴你每一天。</p>
+  </div>
+  <div class="variants-grid">
+    <div class="variant-card" onclick="selectVariant(this,'小象花冠款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">🌸</span>
+      <div class="variant-name">小象・花冠款</div>
+      <div class="variant-desc">溫柔可愛，最受歡迎</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'小象蝴蝶結款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">🎀</span>
+      <div class="variant-name">小象・蝴蝶結款</div>
+      <div class="variant-desc">粉嫩俏皮，甜美風格</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'小象圍巾款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">🧣</span>
+      <div class="variant-name">小象・圍巾款</div>
+      <div class="variant-desc">療癒暖色，秋冬首選</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'小象小背包款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">🎒</span>
+      <div class="variant-name">小象・小背包款</div>
+      <div class="variant-desc">冒險感十足的小旅者</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'鱷魚微笑款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">😊</span>
+      <div class="variant-name">鱷魚・微笑款</div>
+      <div class="variant-desc">治癒笑容，每天開心</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'鱷魚眨眼款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">😉</span>
+      <div class="variant-name">鱷魚・眨眼款</div>
+      <div class="variant-desc">俏皮調皮的小壞蛋</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'鱷魚戴帽款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">🎩</span>
+      <div class="variant-name">鱷魚・戴帽款</div>
+      <div class="variant-desc">紳士風範，超有個性</div>
+    </div>
+    <div class="variant-card" onclick="selectVariant(this,'鱷魚戴頭巾款')">
+      <span class="selected-badge">已選</span>
+      <span class="variant-emoji">🌻</span>
+      <div class="variant-name">鱷魚・戴頭巾款</div>
+      <div class="variant-desc">夏日清爽，陽光氣息</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="section reveal" style="padding-top:0;">
+  <span class="section-tag">方案選擇</span>
+  <h2 class="section-title">選擇你的支持方案</h2>
+  <div class="packages-grid">
+    <div class="pkg-card pkg-elephant">
+      <span class="pkg-icon">🐘</span>
+      <div class="pkg-name">小象單人組</div>
+      <div class="pkg-price">NT$380</div>
+      <ul class="pkg-includes">
+        <li>編織小象吊飾 × 1</li>
+        <li>自選款式配件</li>
+        <li>精美提袋包裝</li>
+        <li>專屬祝福小卡</li>
+      </ul>
+      <button class="pkg-btn" onclick="addToCart('小象單人組', 380)">立即支持</button>
+    </div>
+    <div class="pkg-card pkg-croc">
+      <span class="pkg-icon">🐊</span>
+      <div class="pkg-name">鱷魚單人組</div>
+      <div class="pkg-price" style="color:var(--deep-sage)">NT$380</div>
+      <ul class="pkg-includes">
+        <li>編織鱷魚吊飾 × 1</li>
+        <li>自選款式配件</li>
+        <li>精美提袋包裝</li>
+        <li>專屬祝福小卡</li>
+      </ul>
+      <button class="pkg-btn" onclick="addToCart('鱷魚單人組', 380)">立即支持</button>
+    </div>
+    <div class="pkg-card pkg-pair" style="grid-column: span 1;">
+      <span class="pkg-popular">🌟 最受歡迎</span>
+      <span class="pkg-icon">🐘🐊</span>
+      <div class="pkg-name" style="color:white">最佳拍檔組合</div>
+      <div class="pkg-price">NT$680</div>
+      <ul class="pkg-includes" style="color:rgba(255,255,255,0.8)">
+        <li>小象 + 鱷魚吊飾各一</li>
+        <li>雙款自選配件</li>
+        <li>禮盒精美包裝</li>
+        <li>手寫祝福小卡</li>
+        <li>限量貼紙組</li>
+      </ul>
+      <button class="pkg-btn" onclick="addToCart('最佳拍檔組合', 680)">立即支持 省NT$80</button>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section reveal" style="padding-top:0;">
+  <span class="section-tag">為什麼選我們</span>
+  <h2 class="section-title">療癒的理由</h2>
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon fi-green">🧶</div>
+      <div class="feature-title">純手工編織</div>
+      <div class="feature-desc">每一隻都由職人以4號毛線一針一線親手完成，工序嚴謹細膩，品質有保障。</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon fi-pink">🌿</div>
+      <div class="feature-title">環保天然材質</div>
+      <div class="feature-desc">採用環保毛線與無毒填充棉，對肌膚友善，小朋友也能安心把玩。</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon fi-gold">🎨</div>
+      <div class="feature-title">配件自由搭配</div>
+      <div class="feature-desc">花冠、蝴蝶結、草帽、圍巾……多款配件任意組合，打造屬於你的獨家樣式。</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon fi-tan">🎁</div>
+      <div class="feature-title">精美禮盒包裝</div>
+      <div class="feature-desc">附有手寫祝福小卡與精緻包裝，直接送禮免煩惱，生日、節日皆宜。</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section reveal" style="padding-top:0;">
+  <span class="section-tag">計畫時程</span>
+  <h2 class="section-title">募資到收到的旅程</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <div class="tl-content">
+        <div class="tl-date">2026 年 5 月 1 日 — 5 月 21 日</div>
+        <div class="tl-title">🚀 募資期間</div>
+        <div class="tl-desc">正式開放支持，限時21天，早鳥支持者享有優先出貨資格。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">2</div>
+      <div class="tl-content">
+        <div class="tl-date">2026 年 5 月 22 日 — 6 月 5 日</div>
+        <div class="tl-title">🧶 職人製作</div>
+        <div class="tl-desc">確認所有訂單款式，職人工作坊進入全力製作階段，每一隻都用心對待。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <div class="tl-content">
+        <div class="tl-date">2026 年 6 月 6 日 — 6 月 10 日</div>
+        <div class="tl-title">📦 品管包裝</div>
+        <div class="tl-desc">逐一品質檢驗，手工整理配件、封裝禮盒，並附上手寫祝福小卡。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">4</div>
+      <div class="tl-content">
+        <div class="tl-date">2026 年 6 月 11 日起</div>
+        <div class="tl-title">🚚 出貨配送</div>
+        <div class="tl-desc">依序出貨，全台超商取貨或宅配到府，讓你的療癒小夥伴準時抵達。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section reveal" style="padding-top:0;">
+  <span class="section-tag">支持者說</span>
+  <h2 class="section-title">他們都融化了 ♡</h2>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-text">拿到的瞬間整個人融化！小象的花冠做得超仔細，手感也很好，擺在辦公桌上每天心情都變好了。</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🌸</div>
+        <div>
+          <div class="testi-name">小芸 @台北</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-text">買來送給閨蜜當生日禮物，她說這是今年收到最可愛的禮物！包裝也很精緻，根本不需要另外包。</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🎀</div>
+        <div>
+          <div class="testi-name">Phoebe @台中</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-text">鱷魚戴帽款超有個性！掛在鑰匙圈上每次找鑰匙都會被它萌到，朋友都說好看然後問哪裡買。</div>
+      <div class="testi-author">
+        <div class="testi-avatar">🐊</div>
+        <div>
+          <div class="testi-name">阿仁 @高雄</div>
+          <div class="testi-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section reveal" style="max-width:1100px;margin:0 auto 5rem;margin-left:2rem;margin-right:2rem;">
+  <div class="cta-title">讓療癒陪著你走每一天 🐘🐊</div>
+  <div class="cta-sub">募資計畫進行中，限量手作，錯過不再！<br>每一隻小象與鱷魚都帶著職人的心意與溫度。</div>
+  <div class="cta-btns">
+    <button class="btn-primary" onclick="scrollToPackages()">立即選擇方案</button>
+    <button class="btn-secondary" onclick="showShare()">分享給朋友 ♡</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-size:1.5rem;margin-bottom:0.5rem;">🐘 ♡ 🐊</div>
+  <div>療癒系編織小象＆鱷魚募資計畫 · 2026</div>
+  <div style="margin-top:0.5rem;">手作編織 · 環保材質 · 台灣製造</div>
+</footer>
+
+<!-- STICKY CART -->
+<div class="sticky-cart" id="stickyCart">
+  <div class="cart-info">
+    🛒 已選：<span id="cartItem">尚未選擇</span><br>
+    <strong id="cartPrice">NT$0</strong>
+  </div>
+  <button class="cart-btn" onclick="checkout()">確認支持 →</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── PROGRESS ANIMATION ──
+const targetAmount = 112400;
+const targetBackers = 247;
+const totalGoal = 150000;
+const percent = Math.round(targetAmount / totalGoal * 100);
+
+function animateCount(el, target, prefix = '', suffix = '', duration = 2000) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start = Math.min(start + step, target);
+    el.textContent = prefix + Math.floor(start).toLocaleString() + suffix;
+    if (start >= target) clearInterval(timer);
+  }, 16);
+}
+
+setTimeout(() => {
+  animateCount(document.getElementById('amountDisplay'), targetAmount, 'NT$ ');
+  animateCount(document.getElementById('backerCount'), targetBackers);
+  const fill = document.getElementById('progressFill');
+  fill.style.width = percent + '%';
+  let p = 0;
+  const pt = setInterval(() => {
+    p = Math.min(p + 1, percent);
+    document.getElementById('percentDisplay').textContent = p + '%';
+    if (p >= percent) clearInterval(pt);
+  }, 2000 / percent);
+}, 600);
+
+// ── COUNTDOWN ──
+const endDate = new Date();
+endDate.setDate(endDate.getDate() + 21);
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = endDate - now;
+  if (diff <= 0) return;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  document.getElementById('daysLeft').textContent = d;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ── VARIANT SELECT ──
+let selectedVariant = '';
+function selectVariant(card, name) {
+  document.querySelectorAll('.variant-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedVariant = name;
+  showToast('已選擇：' + name + ' 🎉');
+}
+
+// ── CART ──
+let cartPkg = '';
+let cartPrice = 0;
+
+function addToCart(pkg, price) {
+  cartPkg = pkg;
+  cartPrice = price;
+  document.getElementById('cartItem').textContent = pkg;
+  document.getElementById('cartPrice').textContent = 'NT$' + price.toLocaleString();
+  document.getElementById('stickyCart').classList.add('visible');
+  showToast('已加入：' + pkg + ' ✓');
+}
+
+function checkout() {
+  if (!cartPkg) return;
+  showToast('感謝你的支持！我們會盡快聯繫你 🐘🐊');
+  setTimeout(() => {
+    document.getElementById('stickyCart').classList.remove('visible');
+  }, 2000);
+}
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── SCROLL REVEAL ──
+const revealEls = document.querySelectorAll('.reveal, .tl-item');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), e.target.classList.contains('tl-item') ? i * 100 : 0);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => obs.observe(el));
+
+// ── HELPERS ──
+function scrollToPackages() {
+  document.querySelector('.packages-grid').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showShare() {
+  if (navigator.share) {
+    navigator.share({ title: '療癒系編織小象＆鱷魚募資計畫', text: '超可愛的手作吊飾！一起支持吧 🐘🐊', url: location.href });
+  } else {
+    showToast('已複製連結！快分享給朋友 ♡');
+  }
+}
+</script>
+</body>
+</html>
