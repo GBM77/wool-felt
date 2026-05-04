@@ -457,7 +457,7 @@ body.mv .tabs,.body.mv .lbs,.body.mv .cms,.body.mv .surv-panel{max-width:440px;}
       <div class="bnkrow">
         <div>銀行名稱：<strong>連線商業銀行（LINE Bank）</strong></div>
         <div>銀行代號：<span class="bnkn">824</span></div>
-        <div>帳&nbsp;&nbsp;&nbsp;&nbsp;號：<span class="bnkn">777777777777</span><button class="bcopy" onclick="copyAcct()">複製</button></div>
+        <div>帳&nbsp;&nbsp;&nbsp;&nbsp;號：<span class="bnkn">7777777</span><button class="bcopy" onclick="copyAcct()">複製</button></div>
         <div>轉帳金額：<strong id="bnkAmt" style="color:#C62828;font-size:15px;">NT$0</strong></div>
       </div>
       <div class="bnkfoot">✅ 轉帳後請截圖保存收據<br>✅ 確認入帳後將寄送確認信至您的 Email</div>
@@ -621,7 +621,7 @@ function selPM(btn,label,code){
   btn.classList.add('on');
   document.getElementById('bnkBox').classList.toggle('show',code==='tf');
 }
-function copyAcct(){navigator.clipboard.writeText('111013536788').then(()=>toast('✅ 帳號已複製！'));}
+function copyAcct(){navigator.clipboard.writeText('7777777').then(()=>toast('✅ 帳號已複製！'));}
 
 /* ══ CONFIRM PAY ══ */
 async function confPay(){
